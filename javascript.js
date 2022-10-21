@@ -80,9 +80,9 @@ class Productos{
 let lista_productos = [];
 
 for (let i=0; i < 3; i++){
-    let nombre = prompt("Nombre del producto")
-    let precio = prompt("Precio del producto")
-    let stock = prompt("Stock del producto")
+    let nombre = prompt("Ingrese el nombre del producto")
+    let precio = prompt("Ingrese el precio del producto")
+    let stock = prompt("Ingrese el stock del producto")
     let producto= new Productos(nombre,precio,stock)
     lista_productos.push(producto);
 }
