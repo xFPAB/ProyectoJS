@@ -47,7 +47,94 @@ function calcular_intentos(){
 // LLAMO A ESA FUNCION //
 calcular_intentos()
 
-// UNA VEZ INGRESADO A LA PAGINA COMO **ADMINISTRADOR** SIMULO UNA CARGA DE 3 OBJETOS, LUEGO, SIMULO VENTA.
+// CREO ARRAY DE CARRITO //
+let carrito = []
+
+// ELIJO EL BOTON COMPRA Y LUEGO LO ESCUCHO PARA QUE SI HACE ALGO LO VEA //
+let btn_compra = document.querySelectorAll(".botonCompra")
+
+for (let boton of btn_compra){
+    boton.addEventListener("click", agregar_a_carrito)
+}
+// LE AGREGO FUNCIONALIDAD AL BOTON //
+function agregar_a_carrito(e){
+    let padre = e.target.parentNode;
+    let abuelo = padre.parentNode;
+
+    let nombre_producto = padre.querySelector("h5").textContent;
+    let precio_producto = padre.querySelector("span").textContent
+    let img_producto = abuelo.querySelector("img").src
+
+    console.log(precio_producto)
+    let producto = {
+        nombre : nombre_producto,
+        precio : precio_producto,
+        img: img_producto,
+        cantidad: 1
+    }
+    carrito.push(producto)
+
+    mostrar_carrito(producto);
+}
+// MUESTRO CAMBIOS EN HTML DEL CARRITO //
+function mostrar_carrito(producto){
+
+    let fila = document.createElement("tr");
+    fila.innerHTML = `<td>${producto.nombre}</td>
+                      <td>${producto.cantidad}</td>
+                      <td>${producto.precio}</td>
+                      <td><button class="btn btn-danger borrar_elemento">Borrar</td>`;
+    let tabla = document.getElementById("tbody")
+    tabla.append(fila);
+
+    let btn_borrar = document.querySelectorAll(".borrar_elemento")
+
+    for(let boton of btn_borrar){
+        boton.addEventListener("click", borrar_producto)
+    }
+}
+// LE DOY USO AL BOTON "BORRAR" QUE CREE ANTES
+function borrar_producto(e){
+
+    let abuelo = e.target.parentNode.parentNode;
+    abuelo.remove();
+}
+// SELECCIONO EL BOTON DEL CARRITO PARA DARLE USO //
+let btn_carrito = document.getElementById("mostrar_carrito")
+// CREO UNA FUNCION QUE ME MUESTRE Y OCULTE EL CARRITO//
+function ver_carrito(){
+    let carrito = document.getElementById("carrito");
+    
+    if (carrito.style.display != "none"){
+        carrito.style.display = "none";
+    }
+    else{
+        carrito.style.display="block"
+    }
+}
+// ESCUCHO EL BOTON Y LE DOY LA FUNCION QUE CREE ANTES
+btn_carrito.addEventListener("click", ver_carrito)
+
+// Acá quiero hacer un parate, no me dio el tiempo para poder hacerlo pero me gustaría que haya una ventana que si accedes como administrador escribas productos y se puedan agregar a la lista en el html, por lo demás, el HTML solo da respuesta si el que ingresa es un usuario ADMIN ya qué aun estoy haciendo testeos, proximas entregas haré que el admin pueda ingresar productos y figuren en el html, con imagenes y todo (estas creo que introducidas por url)
+//Por ahora, comenté toda la parte de agregar productos ya qué solo estoy usando los productos que agregue en el html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* // UNA VEZ INGRESADO A LA PAGINA COMO **ADMINISTRADOR** SIMULO UNA CARGA DE 3 OBJETOS, LUEGO, SIMULO VENTA.
 
 class Productos{
     constructor(nombre,precio,stock){
@@ -73,9 +160,9 @@ class Productos{
     update_stock(unidades){
         this.stock = this.stock - unidades
     }
-}
+} */
 
-// INGRESO LOS PRODUCTOS
+/* // INGRESO LOS PRODUCTOS
 
 let lista_productos = [];
 
@@ -130,4 +217,4 @@ if(resultado_compra != undefined){
 }
 else{
     console.log("Hubo un error, intentelo de nuevo!")
-}
+} */
