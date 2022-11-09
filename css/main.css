@@ -78,3 +78,7 @@ li {
   background-color: #fde6bd;
   height: 100vh;
 }
+
+#carrito {
+  display: none;
+}
