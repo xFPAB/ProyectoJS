@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -37,7 +38,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Olla 1</h5>
                     <p class="card-text"></p>
-                    <span class="precio">10000$</span>  
+                    <span class="precio">10000</span>  
                     <a href="#" class="btn btn-primary botonCompra">Anadir a la lista</a>
                   </div>
                 </div>
@@ -48,7 +49,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Olla 2</h5>
                         <p class="card-text"></p>
-                        <span class="precio">7900$</span>
+                        <span class="precio">7900</span>
                         <a href="#" class="btn btn-primary botonCompra">Anadir a la lista</a>
                       </div>
                     </div>
@@ -59,7 +60,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Olla 3</h5>
                         <p class="card-text"></p>
-                        <span class="precio">$6600</span>  
+                        <span class="precio">6600</span>  
                         <a href="#" class="btn btn-primary botonCompra">Anadir a la lista</a>
                       </div>
                   </div>
@@ -73,7 +74,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Olla 4</h5>
                     <p class="card-text"></p>
-                    <span class="precio">99999$</span>
+                    <span class="precio">99999</span>
                     <a href="#" class="btn btn-primary botonCompra">Anadir a la lista</a>
                   </div>
                 </div>
@@ -84,7 +85,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Tostadora</h5>
                         <p class="card-text"></p>
-                        <span class="precio">7900$</span>                      
+                        <span class="precio">7900</span>                      
                         <a href="#" class="btn btn-primary botonCompra">Anadir a la lista</a>
                       </div>
                     </div>
@@ -95,7 +96,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Waflera</h5>
                         <p class="card-text"></p>
-                        <span class="precio">100$</span>  
+                        <span class="precio">100</span>  
                         <a href="#" class="btn btn-primary botonCompra">Anadir a la lista</a>
                       </div>
                   </div>
@@ -115,15 +116,19 @@
                 
                 </tbody>
               </table>
+              <p> Precio final : </p>
+              <p id="preciofinal">0</p>
+              <button id="finalizarcompra" class="btn btn-primary">Finalizar compra</button>
             </div>
         </div>
         <button class="btn btn-primary" id="anadir_al_carrito">Anadir al carrito</button>
-        <p>0</p>
     </main>
 
 
 
 
+
     <script src="./javascript.js"></script>
+
 </body>
 </html>

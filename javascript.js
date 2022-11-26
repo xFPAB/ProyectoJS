@@ -44,6 +44,7 @@ function calcular_intentos(){
         }
     }
 }
+let preciofinal = document.getElementById("preciofinal");
 // LLAMO A ESA FUNCION //
 calcular_intentos()
 let tabla = document.getElementById("carrito");
@@ -76,15 +77,6 @@ function agregar_a_carrito(e){
 }
 // MUESTRO CAMBIOS EN HTML DEL CARRITO //
 function genera_producto(producto){
-
-    /* let fila = document.createElement("tr");
-    fila.innerHTML = `<td>${producto.nombre}</td>
-                      <td>${producto.cantidad}</td>
-                      <td>${producto.precio}</td>
-                      <td><button class="btn btn-danger borrar_elemento">Borrar</td>`;
-    let tabla = document.getElementById("tbody")
-    tabla.append(fila); */
-
     let carrito_nuevo = JSON.parse(localStorage.getItem("Carrito"))
     tabla.innerHTML = ""
     carrito_nuevo.forEach(producto => {
@@ -103,6 +95,7 @@ function genera_producto(producto){
     for(let boton of btn_borrar){
         boton.addEventListener("click", borrar_producto)
     }
+
 }
 // LE DOY USO AL BOTON "BORRAR" QUE CREE ANTES
 function borrar_producto(e){
@@ -125,11 +118,31 @@ function ver_carrito(){
 }
 // ESCUCHO EL BOTON Y LE DOY LA FUNCION QUE CREE ANTES
 btn_carrito.addEventListener("click", ver_carrito)
+
+let finalizarcompra = document.getElementById("finalizarcompra")
 anadir_al_carrito.addEventListener("click",()=>{
     localStorage.setItem("Carrito",JSON.stringify(carrito))
+    let suma=0;
+     for (let i = 0; i < carrito.length; i++) {
+        suma += parseInt(carrito[i].precio);
+        } 
+     console.log(suma);
+    preciofinal.textContent = suma;
 })
 
-
+finalizarcompra.addEventListener("click",()=>{
+    localStorage.clear();     
+    Swal.fire({title: 'Gracias por su compra!!!',
+             text:'Le llegara un mail de confirmacion de su producto',
+                      icon: 'success',         
+                      text:'volvera al inicio en 3 segundos'     })
+                       setTimeout(() => {location.href = "./index.html"},3000)
+})
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&lang=es&units=metric&appid=476622cf2a51134857cb833b23424cfa")
+    .then(response=>response.json())
+    .then(data =>{
+        console.log("Temperatura actual en Buenos Aires:", data.main.temp, "°")
+    })
 
 
 
